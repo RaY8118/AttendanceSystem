@@ -1,27 +1,9 @@
 {
-    "16210": {
-        "name": "Ishica Binod Kumar",
-        "Branch": "ECS",
-        "div": "TE2",
-        "roll_no": 10
-    },
     "16122": {
         "name": "Parth Narendra Ghadi",
         "Branch": "ECS",
         "div": "TE2",
         "roll_no": 53
-    },
-    "16811": {
-        "name": "Mantasha Nasir Jariwala",
-        "Branch": "ECS",
-        "div": "TE2",
-        "roll_no": 55
-    },
-    "16907": {
-        "name": "Prathmesh Hanumant Gilbile",
-        "Branch": "ECS",
-        "div": "TE2",
-        "roll_no": 54
     },
     "16199": {
         "name": "Govind Premaram Choudhary",
@@ -29,11 +11,23 @@
         "div": "TE2",
         "roll_no": 50
     },
-    "16894": {
-        "name": "Saloni Dilip Dawale",
+    "16210": {
+        "name": "Ishica Binod Kumar",
         "Branch": "ECS",
         "div": "TE2",
-        "roll_no": 51
+        "roll_no": 10
+    },
+    "16400": {
+        "name": "Pratik Gajanan Niveragi",
+        "Branch": "ECS",
+        "div": "TE2",
+        "roll_no": 24
+    },
+    "16464": {
+        "name": "Shruti Santosh Patil",
+        "Branch": "ECS",
+        "div": "TE2",
+        "roll_no": 27
     },
     "16489": {
         "name": "Rushikesh Sachin Gaikwad",
@@ -41,16 +35,28 @@
         "div": "TE2",
         "roll_no": 52
     },
-    "16908": {
-        "name": "Pratik Gajanan Niveragi",
+    "16658": {
+        "name": "Anuraag Jayesh Patil",
         "Branch": "ECS",
         "div": "TE2",
-        "roll_no": 30
+        "roll_no": 26
     },
-    "16909": {
-        "name": "Anuraag Patil",
+    "16811": {
+        "name": "Mantasha Nasir Jariwala",
         "Branch": "ECS",
         "div": "TE2",
-        "roll_no": 31
+        "roll_no": 55
+    },
+    "16894": {
+        "name": "Saloni Dilip Dawale",
+        "Branch": "ECS",
+        "div": "TE2",
+        "roll_no": 51
+    },
+    "16907": {
+        "name": "Prathmesh Hanumant Gilbile",
+        "Branch": "ECS",
+        "div": "TE2",
+        "roll_no": 54
     }
 }
