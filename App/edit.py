@@ -33,7 +33,7 @@ conn.commit()
 def create_backup():
     # Get the current date and time
     current_datetime = datetime.datetime.now()
-    backup_folder = "backup"  # Specify the backup folder path
+    backup_folder = "../backup"  # Specify the backup folder path
 
     # Create the backup folder if it doesn't exist
     if not os.path.exists(backup_folder):
@@ -150,7 +150,8 @@ def main():
     elif choice == 'Delete Record':
         st.subheader('Delete Record')
         df = pd.read_sql_query('SELECT * FROM attendance', conn)
-        record_id = st.number_input('Record ID', min_value=1, max_value=len(df), step=1)
+        max_id = conn.execute('SELECT MAX(id) FROM attendance').fetchone()[0]
+        record_id = st.number_input('Record ID', min_value=1, max_value=max_id, step=1)
 
         if st.button('Delete'):
             delete_record(record_id)
