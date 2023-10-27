@@ -18,6 +18,7 @@ def speak(str1):
 
 
 def morning_attendance_thread(name, current_date, roll_no, div, branch, reg_id):
+    time.sleep(2)
     speak("Starting Attendance recorded successfully")
     start_time = datetime.datetime.now().strftime("%H:%M:%S")
     print("Start time:", start_time)
@@ -40,6 +41,7 @@ def morning_attendance_thread(name, current_date, roll_no, div, branch, reg_id):
 
 
 def evening_attendance_thread(name, current_date):
+    time.sleep(2)
     speak("Ending Attendance recorded successfully")
     end_time = datetime.datetime.now().strftime("%H:%M:%S")
     print("End time:", end_time)
@@ -113,6 +115,8 @@ encodeListKnown, studentIds = encodeListKnownWithIds
 recognized_students = set()
 face_recognition_interval = 5
 frame_counter = 0
+attendance_recorded = False
+delay = 5
 while True:
     success, img = cap.read()
     frame_counter += 1
@@ -161,12 +165,18 @@ while True:
                                      args=(name, current_date, roll_no, div, branch, reg_id))
                 t.start()
                 recognized_students.add(student_id)
+                attendance_recorded = True
 
             if student_id and even_attendance and student_id not in recognized_students:
                 t = threading.Thread(target=evening_attendance_thread,
                                      args=(name, current_date))
                 t.start()
                 recognized_students.add(student_id)
+                attendance_recorded = True
+
+    if attendance_recorded:
+        time.sleep(delay)
+        attendance_recorded = False
 
     if k == ord('q'):
         break

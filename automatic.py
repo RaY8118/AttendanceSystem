@@ -18,6 +18,7 @@ def speak(str1):
 
 
 def morning_attendance_thread(name, current_date, roll_no, div, branch, reg_id):
+    time.sleep(3)
     speak("Starting Attendance recorded successfully")
     start_time = datetime.datetime.now().strftime("%H:%M:%S")
     print("Start time:", start_time)
@@ -40,6 +41,7 @@ def morning_attendance_thread(name, current_date, roll_no, div, branch, reg_id):
 
 
 def evening_attendance_thread(name, current_date):
+    time.sleep(3)
     speak("Ending Attendance recorded successfully")
     end_time = datetime.datetime.now().strftime("%H:%M:%S")
     print("End time:", end_time)
@@ -60,8 +62,8 @@ def evening_attendance_thread(name, current_date):
     conn.close()
 
 
-morn_time = datetime_time(10, 0)
-even_time = datetime_time(17, 0)
+morn_time = datetime_time(21, 0)
+even_time = datetime_time(22, 0)
 curr_time = datetime.datetime.now().time()
 if morn_time <= curr_time < even_time:
     morn_attendance = True
@@ -151,6 +153,7 @@ while True:
                                      args=(name, current_date, roll_no, div, branch, reg_id))
                 t.start()
                 recognized_students.add(student_id)
+                time.sleep(1)
 
             if student_id and even_attendance and student_id not in recognized_students:
                 t = threading.Thread(target=evening_attendance_thread,
