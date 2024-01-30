@@ -6,27 +6,31 @@ import pickle
 from pathlib import Path
 import streamlit_authenticator as stauth
 import datetime
-import shutil
 import os
+import shutil
 
 
 def create_backup():
     # Get the current date and time
     current_datetime = datetime.datetime.now()
-    backup_folder = "backup"  # Specify the backup folder path
+    current_date = current_datetime.date()
+    backup_folder = "../backup"  # Specify the backup folder path
 
     # Create the backup folder if it doesn't exist
     if not os.path.exists(backup_folder):
         os.makedirs(backup_folder)
+    if not os.path.exists(f"backup_{current_date.strftime('%Y-%m-%d')}.db"):
+        # Generate the backup file name using the current date and time
+        backup_file = f"backup_{current_date.strftime('%Y-%m-%d')}.db"
 
-    # Generate the backup file name using the current date and time
-    backup_file = f"backup_{current_datetime.strftime('%Y-%m-%d_%H-%M-%S')}.db"
+        # Copy the database file to the backup folder
+        shutil.copyfile("../Database/attendance_database.db", os.path.join(backup_folder, backup_file))
 
-    # Copy the database file to the backup folder
-    shutil.copyfile("../Database/attendance_database.db", os.path.join(backup_folder, backup_file))
-
-    print("Backup created successfully.")
-    st.success("Backup created successfully.")
+        print("Backup created successfully.")
+        st.success("Backup created successfully.")
+    else:
+        print(f"Backup for {current_date} already exists")
+        st.error(f"Backup for {current_date} already exists")
 
 
 def schedule_backup():
@@ -45,8 +49,8 @@ st.set_page_config(
 )
 
 # Define authentication credentials
-names = ["admin1", "admin2", "admin3", "student1"]
-usernames = ["admin1", "admin2", "admin3", "student1"]
+names = ["admin1", "admin2","student1"]
+usernames = ["admin1", "admin2", "student1"]
 
 # Load hashed passwords from a pickle file
 file_path = Path(__file__).parent / "../Resources/hashed_pw.pkl"
